@@ -47,7 +47,8 @@ if (( ${+functions[git-info]} )); then
   add-zsh-hook precmd git-info
 fi
 
+OSC_PROMPT=$(printf "\033]133;A\033\\")
 PS1='
-'"\033]133;A\033\\"'%(3L.%B%F{yellow}(%L)%f%b .)%(!.%B%F{red}%n%f%b in .${SSH_TTY:+"%B%F{yellow}%n%f%b in "})${SSH_TTY:+"%B%F{green}%m%f%b in "}%B%F{cyan}%~%f%b${(e)git_info[prompt]}${VIRTUAL_ENV:+" via %B%F{yellow}${VIRTUAL_ENV:t}%f%b"}${duration_info}
+'"$OSC_PROMPT"'%(3L.%B%F{yellow}(%L)%f%b .)%(!.%B%F{red}%n%f%b in .${SSH_TTY:+"%B%F{yellow}%n%f%b in "})${SSH_TTY:+"%B%F{green}%m%f%b in "}%B%F{cyan}%~%f%b${(e)git_info[prompt]}${VIRTUAL_ENV:+" via %B%F{yellow}${VIRTUAL_ENV:t}%f%b"}${duration_info}
 %B%(1j.%F{blue}*%f .)%(?.%F{green}.%F{red}%? )$(_prompt_asciiship_vimode)%f%b '
 unset RPS1
